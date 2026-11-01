@@ -68,6 +68,40 @@ crow::response json_response(int status, const nlohmann::json& body)
     return response;
 }
 
+bool is_allowed_frontend_origin(const crow::request& request)
+{
+    const char* configured_origin = std::getenv("FRONTEND_ORIGIN");
+    return configured_origin != nullptr && *configured_origin != '\0' &&
+           request.get_header_value("Origin") == configured_origin;
+}
+
+void add_cors_headers(const crow::request& request, crow::response& response)
+{
+    response.add_header("Vary", "Origin");
+    if (is_allowed_frontend_origin(request))
+    {
+        response.add_header("Access-Control-Allow-Origin",
+                            request.get_header_value("Origin"));
+    }
+}
+
+struct CorsMiddleware
+{
+    struct context
+    {};
+
+    void before_handle(crow::request&, crow::response&, context&)
+    {}
+
+    void after_handle(crow::request& request, crow::response& response, context&)
+    {
+        if (request.url == "/api/health" || request.url == "/api/evaluate")
+        {
+            add_cors_headers(request, response);
+        }
+    }
+};
+
 template<typename Operation>
 crow::response handle_request(Operation&& operation)
 {
@@ -120,6 +154,7 @@ std::string read_frontend_file(const std::string& name)
 {
     static const std::unordered_map<std::string, std::string> allowed_files = {
         {"app.js", "application/javascript; charset=utf-8"},
+        {"config.js", "application/javascript; charset=utf-8"},
         {"styles.css", "text/css; charset=utf-8"}
     };
     const auto found = allowed_files.find(name);
@@ -165,7 +200,7 @@ int main()
     try
     {
         interview::InterviewService service;
-        crow::SimpleApp app;
+        crow::App<CorsMiddleware> app;
 
         CROW_ROUTE(app, "/")([] {
             std::ifstream file(std::filesystem::path(INTERVIEW_FRONTEND_DIR) /
@@ -187,9 +222,9 @@ int main()
             try
             {
                 const auto content = read_frontend_file(name);
-                const auto type = name == "app.js"
-                                      ? "application/javascript; charset=utf-8"
-                                      : "text/css; charset=utf-8";
+                const auto type = name == "styles.css"
+                                      ? "text/css; charset=utf-8"
+                                      : "application/javascript; charset=utf-8";
                 return static_response(content, type);
             }
             catch (const HttpError& error)

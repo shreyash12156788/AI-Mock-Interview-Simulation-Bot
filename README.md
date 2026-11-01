@@ -51,11 +51,29 @@ All endpoints are served by the C++ backend:
 
 Interview setup, question generation, progression, reporting, and persistence happen in the browser.
 
-## Deploy
+## Deploy to Vercel and Render
 
-The included `Dockerfile` builds the C++ server and `render.yaml` configures a Render web service. Connect this repository to Render as a Blueprint; no provider credentials or secret environment variables are required. Render supplies `PORT` automatically.
+The Vercel `NOT_FOUND` happened because the repository root contains no homepage: the static site entry point is `frontend/index.html`. Configure the Vercel project Root Directory as `frontend`; do not deploy the repository root or attempt to run the persistent Crow server on Vercel.
 
-The frontend itself is static HTML, CSS, and JavaScript, but answer evaluation requires the C++ backend. Static hosting alone is not sufficient unless `/api/evaluate` is routed to a running instance of this backend.
+### Deploy the C++ backend on Render
+
+1. In Render, create a Blueprint from this repository, or create a Docker web service with the repository root as its context and the included `Dockerfile`.
+2. Keep the service environment variable `FRONTEND_ORIGIN` set to `https://ai-mock-interview-simulation-bot.vercel.app`. `render.yaml` supplies this value for the Blueprint. Change it to the exact production frontend origin if using a custom domain.
+3. Deploy and wait for `GET /api/health` to return a healthy response. Copy the service's public HTTPS origin, for example `https://adaptive-interview-challenge.onrender.com`.
+
+Render provides `PORT`; the C++ service listens on it. The Docker image builds and runs Crow and includes the frontend files for local/server use. CORS permits the configured frontend origin for the API. The browser sends the JSON evaluation body as `text/plain` so its cross-origin POST is a CORS-simple request; this avoids Crow's automatic OPTIONS response, which does not include CORS headers.
+
+### Deploy the static frontend on Vercel
+
+1. Push the updated repository to GitHub and import it into Vercel.
+2. In **Project Settings → Build and Deployment**, set **Root Directory** to `frontend` and enable including files outside the root directory only if Vercel requests it (the frontend build does not need them).
+3. Set **Framework Preset** to **Other**, **Build Command** to `sh build.sh`, and **Output Directory** to `dist`. `frontend/vercel.json` also defines the build command and output directory.
+4. Add the environment variable `BACKEND_URL` with the Render service's public HTTPS origin (no path), for Production and any Preview environments you intend to use.
+5. Deploy. The build copies the unchanged HTML/CSS/JS and assets into `dist/`, and generates `assets/config.js` with `BACKEND_URL`. The browser then sends evaluations to the Render C++ backend.
+
+For Vercel previews or a custom frontend domain, configure Render's `FRONTEND_ORIGIN` to match that exact origin. The production Vercel origin is already configured in `render.yaml`.
+
+The frontend is vanilla HTML, CSS, and JavaScript; there is no package manifest or frontend framework. The build script is shell-only and does not run a Node.js application.
 
 ## Tests
 

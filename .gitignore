@@ -1,6 +1,7 @@
 .env
 .env.*
 build/
+/frontend/dist/
 cmake-build-*/
 out/
 .vs/

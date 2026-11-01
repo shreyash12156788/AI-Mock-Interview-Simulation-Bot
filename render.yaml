@@ -4,3 +4,6 @@ services:
     runtime: docker
     plan: starter
     healthCheckPath: /api/health
+    envVars:
+      - key: FRONTEND_ORIGIN
+        value: https://ai-mock-interview-simulation-bot.vercel.app

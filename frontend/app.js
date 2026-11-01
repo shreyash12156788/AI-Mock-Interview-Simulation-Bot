@@ -2,6 +2,7 @@
 
 const storageKey = "adaptive-interview-session-v1";
 const questionLimit = 6;
+const backendUrl = window.ADAPTIVE_INTERVIEW_CONFIG?.backendUrl || "";
 const views = {
   landing: document.getElementById("landing-view"),
   setup: document.getElementById("setup-view"),
@@ -578,9 +579,9 @@ async function evaluateCurrentAnswer(answer, button) {
   saveState();
   setBusy(button, true, "Assessing your answer…");
   try {
-    const response = await fetch("/api/evaluate", {
+    const response = await fetch(`${backendUrl}/api/evaluate`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
       body: JSON.stringify({
         question: state.question.text,
         category: state.category,
