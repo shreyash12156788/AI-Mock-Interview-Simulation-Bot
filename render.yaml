@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: adaptive-interview-challenge
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health

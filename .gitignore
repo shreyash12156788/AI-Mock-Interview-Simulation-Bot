@@ -1,0 +1,10 @@
+.env
+.env.*
+build/
+cmake-build-*/
+out/
+.vs/
+.idea/
+*.log
+coverage/
+Thumbs.db

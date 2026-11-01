@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Practice your next interview with a thoughtful, adaptive interview engine.">
+  <title>Adaptive Interview Challenge — Interview practice, reimagined</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Adaptive home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 28 10v12L16 28.5 4 22V10L16 3.5Z" stroke="currentColor" stroke-width="1.5"/><path d="m11 18 5-9 5 14M13.2 14h5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-name">adaptive<span>.</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="ai-status"><span class="status-dot"></span> ADAPTIVE ENGINE READY</span>
+      <span class="topbar-divider"></span>
+      <a class="topbar-help" href="#how-it-works">How it works</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="view active" id="landing-view" aria-labelledby="hero-title">
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-sparkle">✳</span> YOUR NEXT INTERVIEW, REIMAGINED</div>
+          <h1 id="hero-title">Walk in ready.<br><span class="gradient-text">Show them what</span><br><span class="gradient-text">you’re made of.</span></h1>
+          <p class="hero-description">A thoughtful interview engine that adapts as you go and helps you find your edge. Real practice for the moments that matter.</p>
+          <div class="hero-actions">
+            <button class="button button-primary button-large" id="start-button" type="button">Start your interview <span aria-hidden="true">→</span></button>
+            <div class="hero-proof"><span class="avatar-stack" aria-hidden="true"><i>A</i><i>M</i><i>J</i></span><span>Make your next move count</span></div>
+          </div>
+          <div class="hero-metrics" aria-label="Interview benefits">
+            <div><strong>01</strong><span>One question at a time</span></div>
+            <div><strong>02</strong><span>Gets smarter with you</span></div>
+            <div><strong>03</strong><span>Feedback you can use</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-glow" aria-hidden="true"></div>
+          <div class="preview-card">
+            <div class="preview-top">
+              <div class="preview-label"><span class="live-pulse"></span> SESSION AT A GLANCE</div>
+              <span class="preview-session">ADAPTIVE ENGINE</span>
+            </div>
+            <div class="preview-count"><span>UP TO 6 QUESTIONS</span><span>ONE AT A TIME</span></div>
+            <div class="preview-question"><span class="question-mark">✦</span>Every question is shaped by your role, experience, and the answers you share.</div>
+            <div class="preview-answer">
+              <div class="answer-avatar" aria-hidden="true">↗</div>
+              <div class="answer-line"><span class="feedback-heading">Your answer</span><span class="feedback-copy">In your own words, at your own pace.</span></div>
+              <span class="preview-answer-label">OPEN-ENDED</span>
+            </div>
+            <div class="preview-feedback">
+              <span class="feedback-icon">✳</span>
+              <div><span class="feedback-heading">Clear, useful feedback</span><span class="feedback-copy">A practical suggestion after every answer.</span></div>
+              <span class="feedback-score">4<span> dimensions</span></span>
+            </div>
+            <div class="preview-foot"><span>ADAPTIVE DIFFICULTY</span><span class="difficulty-chip">Moves with your progress <span>↗</span></span></div>
+          </div>
+          <div class="floating-note note-top"><span class="note-icon">✦</span><span>Made for <strong>your next move</strong></span></div>
+          <div class="floating-note note-bottom"><span class="note-bars"><i></i><i></i><i></i><i></i></span><span>Real-time, <strong>personal feedback</strong></span></div>
+          <div class="visual-caption">YOUR PRACTICE SPACE <span>·</span> BUILT AROUND YOU</div>
+        </div>
+      </div>
+      <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-heading"><span class="eyebrow">A BETTER WAY TO PREPARE</span><h2 id="how-title">Less rehearsing. More <span class="gradient-text">becoming.</span></h2></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01</span><span class="step-icon">◎</span><h3>Make it yours</h3><p>Tell us what you’re aiming for. Your interview is built around your role and experience.</p></article>
+          <article class="step-card"><span class="step-number">02</span><span class="step-icon">↗</span><h3>Find your rhythm</h3><p>Get one fresh question at a time. The conversation follows your answers, not a script.</p></article>
+          <article class="step-card"><span class="step-number">03</span><span class="step-icon">✧</span><h3>Leave with a plan</h3><p>Get honest, useful feedback—and a clear picture of where to grow next.</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="view setup-view" id="setup-view" aria-labelledby="setup-title" hidden>
+      <div class="setup-shell">
+        <button class="back-link" type="button" data-go="landing"><span aria-hidden="true">←</span> Back to home</button>
+        <div class="setup-heading"><div class="eyebrow">YOUR PRACTICE, YOUR PACE</div><h1 id="setup-title">Let’s make this <span class="gradient-text">about you.</span></h1><p>A few details help us create the right conversation.</p></div>
+        <form class="setup-card" id="setup-form">
+          <div class="form-grid">
+            <label class="field field-full"><span>Your name</span><input name="candidateName" type="text" autocomplete="name" maxlength="80" placeholder="How should we address you?" required></label>
+            <label class="field field-full"><span>Role you’re going for</span><input name="jobRole" type="text" maxlength="120" placeholder="e.g. Product Designer, Backend Engineer" required></label>
+            <label class="field"><span>Experience level</span><span class="select-wrap"><select name="experienceLevel" required><option value="Entry level">Entry level</option><option value="Mid level" selected>Mid level</option><option value="Senior">Senior</option><option value="Lead">Lead</option></select><span aria-hidden="true">⌄</span></span></label>
+            <label class="field"><span>Interview category</span><span class="select-wrap"><select name="category" required><option value="General Technical Interview" selected>General Technical Interview</option><option value="C++">C++</option><option value="Java">Java</option><option value="Python">Python</option><option value="Data Structures">Data Structures</option><option value="DBMS">DBMS</option><option value="Operating Systems">Operating Systems</option><option value="Computer Networks">Computer Networks</option><option value="OOP">OOP</option><option value="HR Interview">HR Interview</option></select><span aria-hidden="true">⌄</span></span></label>
+          </div>
+          <fieldset class="difficulty-group"><legend>Where should we start?</legend><div class="difficulty-options">
+            <label class="difficulty-option"><input type="radio" name="difficulty" value="Easy"><span class="difficulty-dot dot-easy"></span><span><strong>Easy</strong><small>Find your feet</small></span><span class="radio-mark"></span></label>
+            <label class="difficulty-option selected"><input type="radio" name="difficulty" value="Medium" checked><span class="difficulty-dot dot-medium"></span><span><strong>Medium</strong><small>A balanced start</small></span><span class="radio-mark"></span></label>
+            <label class="difficulty-option"><input type="radio" name="difficulty" value="Hard"><span class="difficulty-dot dot-hard"></span><span><strong>Hard</strong><small>Push your thinking</small></span><span class="radio-mark"></span></label>
+          </div></fieldset>
+          <div class="setup-note"><span aria-hidden="true">✦</span><span>Questions are dynamically generated using our adaptive interview engine. Answers are evaluated using our rule-based assessment system.</span></div>
+          <div class="form-error" id="setup-error" role="alert" hidden></div>
+          <button class="button button-primary button-full" id="create-button" type="submit">Create my interview <span aria-hidden="true">→</span></button>
+          <p class="privacy-note"><span aria-hidden="true">⌑</span> Your progress and answers are saved in this browser using LocalStorage.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="view interview-view" id="interview-view" aria-labelledby="interview-title" hidden>
+      <div class="interview-shell">
+        <div class="interview-header">
+          <button class="back-link" type="button" data-go="landing"><span aria-hidden="true">←</span> Leave session</button>
+          <div class="session-label"><span class="live-pulse"></span> YOUR INTERVIEW IS IN PROGRESS</div>
+          <button class="button button-quiet" id="end-button" type="button">Finish interview <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="interview-progress">
+          <div class="progress-label"><span id="question-counter">QUESTION 1 OF 6</span><span class="difficulty-readout"><span class="status-dot"></span> <span id="difficulty-label">MEDIUM</span> DIFFICULTY</span></div>
+          <div class="progress-track"><span id="progress-fill"></span></div>
+        </div>
+        <div class="interview-content">
+          <div class="interviewer-card">
+            <div class="interviewer-top"><div class="interviewer-id"><span class="interviewer-avatar"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 27 10v12l-11 6L5 22V10L16 4Z" stroke="currentColor" stroke-width="1.5"/><path d="m12 18 4-8 4 12m-5-7h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><div><span class="interviewer-name">Your interviewer</span><span class="interviewer-subtitle">Curious by design. Focused on you.</span></div></div><span class="question-tag" id="question-tag">QUESTION 01</span></div>
+            <div class="question-body"><span class="question-quote">“</span><h1 id="interview-title" aria-live="polite">Getting your first question ready…</h1></div>
+            <div class="question-context"><span class="context-sparkle">✳</span><span id="question-context">Take a breath. There’s no rush to get it perfect.</span></div>
+          </div>
+          <form id="answer-form" class="answer-card">
+            <label class="answer-label" for="answer-input"><span>Your answer</span><span>Take your time</span></label>
+            <textarea id="answer-input" name="answer" maxlength="6000" placeholder="Talk us through how you’d approach this…" required></textarea>
+            <div class="answer-footer"><span id="character-count">0 / 6,000</span><button class="button button-primary" id="submit-answer" type="submit">Share your answer <span aria-hidden="true">→</span></button></div>
+          </form>
+          <section class="feedback-card" id="feedback-card" aria-live="polite" hidden>
+            <div class="feedback-top"><span class="feedback-icon large">✳</span><div><span class="eyebrow">A MOMENT TO REFLECT</span><h2>Your answer, thoughtfully considered.</h2></div><span class="feedback-overall" id="feedback-overall">—<small>/10</small></span></div>
+            <div class="score-grid" id="score-grid"></div>
+            <p class="improvement-note" id="improvement-note"></p>
+            <div class="feedback-footer"><span class="difficulty-change" id="difficulty-change"></span><button class="button button-primary" id="continue-button" type="button">Next question <span aria-hidden="true">→</span></button></div>
+          </section>
+          <div class="interview-error" id="interview-error" role="alert" hidden></div>
+        </div>
+        <p class="interview-footnote"><span aria-hidden="true">✦</span> There’s no perfect answer. This is your space to think out loud.</p>
+      </div>
+    </section>
+
+    <section class="view report-view" id="report-view" aria-labelledby="report-title" hidden>
+      <div class="report-shell">
+        <div class="report-overline"><span class="report-sparkle">✳</span> THAT’S A WRAP, <span id="report-name">FRIEND</span></div>
+        <div class="report-heading"><h1 id="report-title">You showed up.<br><span class="gradient-text">That’s where it starts.</span></h1><p>A clear-eyed look at your practice—and a few good next steps.</p></div>
+        <div class="report-score-card"><div class="report-score-copy"><span class="eyebrow">YOUR OVERALL SCORE</span><strong><span id="total-score">—</span><small> / 10</small></strong><span class="score-caption" id="score-caption">A little progress adds up.</span></div><div class="report-score-ring" id="score-ring" role="img" aria-label="Overall interview score"><span id="ring-score">—</span></div><div class="report-stats"><div><span>QUESTIONS ANSWERED</span><strong id="report-count">—</strong></div><div><span>CORRECTNESS</span><strong id="report-correctness">—</strong></div><div><span>PERFORMANCE</span><strong id="report-percentage">—</strong></div><div><span>DIFFICULTY PROGRESSION</span><strong id="report-difficulty">—</strong></div><div><span>ROLE PRACTICED</span><strong id="report-role">—</strong></div></div></div>
+        <div class="report-grid">
+          <article class="report-card"><div class="report-card-heading"><span class="report-card-icon strength-icon">↗</span><div><span class="eyebrow">YOUR EDGE</span><h2>Strengths</h2></div></div><ul id="strength-list"></ul></article>
+          <article class="report-card"><div class="report-card-heading"><span class="report-card-icon growth-icon">✧</span><div><span class="eyebrow">ROOM TO GROW</span><h2>Opportunities</h2></div></div><ul id="weakness-list"></ul></article>
+        </div>
+        <article class="report-card topic-card"><div class="report-card-heading"><span class="report-card-icon topic-icon">◷</span><div><span class="eyebrow">A CLOSER LOOK</span><h2>Topic-by-topic</h2></div></div><div class="topic-list" id="topic-list"></div></article>
+        <article class="report-card next-steps"><div class="report-card-heading"><span class="report-card-icon next-icon">✦</span><div><span class="eyebrow">YOUR NEXT CHAPTER</span><h2>Small steps, real momentum.</h2></div></div><ul id="suggestion-list"></ul></article>
+        <div class="report-actions"><button class="button button-primary button-large" id="restart-button" type="button">Practice again <span aria-hidden="true">→</span></button><button class="button button-quiet" id="home-button" type="button">Back to home</button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>adaptive<span class="footer-dot">.</span> <span>Practice with purpose.</span></span><span>Made for your next move <span class="footer-heart">✦</span></span></footer>
+</body>
+</html>
